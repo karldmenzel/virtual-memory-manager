@@ -1,0 +1,4 @@
+# This file tells git to ignore all files in this directory, but to keep the directory itself
+# This directory needs to be present for the pipeline
+*
+!.gitignore
