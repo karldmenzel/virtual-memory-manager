@@ -30,7 +30,7 @@ char** readText(char* fileName, int rowWidth, int numLines) {
 	FILE* file = openFile(fileName);
 	char** fileText = malloc(sizeof(char*) * numLines);
     int lineNum = 0;
-    fileText[lineNum] = malloc(sizeof(char) * rowWidth);
+    fileText[lineNum] = malloc(sizeof(char) * (rowWidth + 2));
 	while (fgets(fileText[lineNum], rowWidth + 2, file) != NULL) { //Plus 2, one for \n, one since fgets subs 1
         fileText[lineNum][strcspn(fileText[lineNum], "\n")] = 0; //This removes trailing \n's from each entry
 
@@ -39,11 +39,11 @@ char** readText(char* fileName, int rowWidth, int numLines) {
 
         lineNum++;
         if(lineNum != numLines)
-    	    fileText[lineNum] = malloc(sizeof(char) * rowWidth);
+    	    fileText[lineNum] = malloc(sizeof(char) * (rowWidth + 2));
     }
 
     log_debugs("File %s contents:", fileName);
-	for(int j = 0; j < (numLines); j++) {
+	for(int j = 0; j < (lineNum); j++) {
 		log_debugs("%s", fileText[j]);
 	}
 
