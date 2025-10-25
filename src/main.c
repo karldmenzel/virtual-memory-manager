@@ -4,9 +4,5 @@
 int main() {
 	printf("Hello world from Karl's virtual memory manager!\n\n");
 
-    int response = todo();
-
-    printf("Response: %d\n", response);
-
 	return 0;
 }
