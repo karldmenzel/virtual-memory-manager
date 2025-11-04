@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/macos,clion
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,clion
 
+virtual_memory_manager_test
+virtual_memory_manager_test.dSYM
+
 .idea/
 
 ### CLion ###

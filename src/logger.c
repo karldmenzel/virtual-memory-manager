@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include "logger.h"
 
-enum LOG_LEVEL currentLogLevel = INFO;
+enum LOG_LEVEL currentLogLevel = ERROR;
 
 void log_debugi(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution));
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
     sprintf(formattedMessage, logMessage, substitution);
     log_debug(formattedMessage);
 }
 
 void log_infoi(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution));
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
     sprintf(formattedMessage, logMessage, substitution);
     log_info(formattedMessage);
 }
 
 void log_errori(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution));
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
     sprintf(formattedMessage, logMessage, substitution);
     log_error(formattedMessage);
 }
