@@ -21,5 +21,9 @@ test: compile-test
 	./$(TEST_OUTPUT_FILE)
 
 clean:
-	rm ./$(TEST_OUTPUT_FILE)
-	rm ./$(OUTPUT_FILE)
+	@if [ -f "$(TEST_OUTPUT_FILE)" ]; then \
+ 		rm ./$(TEST_OUTPUT_FILE); \
+	fi; \
+	if [ -f "$(OUTPUT_FILE)" ]; then \
+ 		rm ./$(OUTPUT_FILE); \
+	fi;
