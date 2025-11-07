@@ -31,8 +31,8 @@ int main() {
 		log_debugi("Page id: %d", pageIds[i]);
     }
 
-    free(addresses);
-    free(pageIds);
+//    free(addresses);
+//    free(pageIds);
 
 	return 0;
 }
