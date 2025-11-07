@@ -6,10 +6,10 @@
 
 // This function takes a file name, and returns a file pointer.
 FILE* openFile(char* fileName) {
-	log_debugs("Opening file %s", fileName);
+//	log_debugs("Opening file %s", fileName);
     FILE* file = fopen(fileName, "r");
     if (file == NULL) {
-        log_errors("Could not open file %s", fileName);
+//        log_errors("Could not open file %s", fileName);
     }
     return file;
 }
@@ -23,7 +23,7 @@ int* readNumbers(char* fileName, int numLines) {
 
 	FILE* file = openFile(fileName);
 
-    log_infoi("File read - num lines: %d", numLines);
+//    log_infoi("File read - num lines: %d", numLines);
 
     for(int i = 0; i < numLines; i++) {
     	char line[1024];
@@ -32,7 +32,7 @@ int* readNumbers(char* fileName, int numLines) {
         int number = atoi(line);
         numbers[i] = number;
 
-        log_debugi("File read - number: %d", number);
+//        log_debugi("File read - number: %d", number);
     }
 
     return numbers;
