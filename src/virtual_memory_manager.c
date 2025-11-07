@@ -19,7 +19,7 @@ FILE* openFile(char* fileName) {
 // Argument: numLines, the number of lines in the file
 // Return: an integer array with the contents of the file
 int* readNumbers(char* fileName, int numLines) {
-	int* numbers = calloc(numLines + 1, sizeof(int)); //Making the array just numLines large caused a crash, TODO why?
+	int* numbers = calloc(numLines, sizeof(int));
 
 	FILE* file = openFile(fileName);
 
