@@ -6,42 +6,42 @@
 enum LOG_LEVEL currentLogLevel = INFO;
 
 void log_debugi(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 100);
     sprintf(formattedMessage, logMessage, substitution);
     log_debug(formattedMessage);
     free(formattedMessage);
 }
 
 void log_infoi(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 100);
     sprintf(formattedMessage, logMessage, substitution);
     log_info(formattedMessage);
     free(formattedMessage);
 }
 
 void log_errori(char* logMessage, int substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 30);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 300);
     sprintf(formattedMessage, logMessage, substitution);
     log_error(formattedMessage);
     free(formattedMessage);
 }
 
 void log_debugs(char* logMessage, char* substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 100);
     sprintf(formattedMessage, logMessage, substitution);
     log_debug(formattedMessage);
     free(formattedMessage);
 }
 
 void log_infos(char* logMessage, char* substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 100);
     sprintf(formattedMessage, logMessage, substitution);
     log_info(formattedMessage);
     free(formattedMessage);
 }
 
 void log_errors(char* logMessage, char* substitution) {
-    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 30);
+    char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 300);
     sprintf(formattedMessage, logMessage, substitution);
     log_error(formattedMessage);
     free(formattedMessage);

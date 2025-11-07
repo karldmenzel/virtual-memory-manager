@@ -17,7 +17,7 @@ const int NUM_FRAMES = 128; // 2^7
 const int NUM_PAGES = 256; // 2^8
 
 int main() {
-//	log_info("Started memory manager program...");
+	log_info("Started memory manager program...");
 
 	int* addresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
@@ -38,7 +38,7 @@ int main() {
     free(addresses);
 //    free(pageIds);
 
-//    log_info("Program finished.");
+    log_info("Program finished.");
 
 	return 0;
 }
