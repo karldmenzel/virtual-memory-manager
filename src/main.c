@@ -27,13 +27,13 @@ int main() {
 		log_debugi("Address: %d", addresses[i]);
     }
 
-//	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
+	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
 
-//    log_info("Sucessfully read page ids.");
+    log_info("Sucessfully read page ids.");
 
-//    for (int i = 0; i < NUM_PAGE_IDS; i++) {
-//		log_debugi("Page id: %d", pageIds[i]);
-//    }
+    for (int i = 0; i < NUM_PAGE_IDS; i++) {
+		log_debugi("Page id: %d", pageIds[i]);
+    }
 
     free(addresses);
 //    free(pageIds);
