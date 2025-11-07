@@ -1,8 +1,9 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+
 #include "logger.h"
 
-enum LOG_LEVEL currentLogLevel = ERROR;
+enum LOG_LEVEL currentLogLevel = DEBUG;
 
 void log_debugi(char* logMessage, int substitution) {
     char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);

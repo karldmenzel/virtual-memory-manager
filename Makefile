@@ -8,6 +8,8 @@ OUTPUT_FILE = build/karl_memory_manager
 TEST_FILE = test/virtual_memory_manager_test.c
 TEST_OUTPUT_FILE = build/tests
 
+all: compile
+
 compile: $(SRC_FILE) clean
 	$(CC) $(CFLAGS) -o $(OUTPUT_FILE) $(SRC_FILE) $(LIB_FILE) $(LOG_FILE)
 

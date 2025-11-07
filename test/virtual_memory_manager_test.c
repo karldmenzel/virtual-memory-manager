@@ -1,16 +1,20 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <assert.h>
-#include <string.h>
+
 #include "virtual_memory_manager.h"
 
 void fileUtilTests() {
-    int rowWidth = 5;
-    int numLines = 3;
-    char** text = readText("test/test.txt", rowWidth, numLines);
-    assert(text != NULL);
-    assert(strcmp(text[0], "12345") == 0);
-    assert(strcmp(text[1], "56789") == 0);
-    assert(strcmp(text[2], "65874") == 0);
+    int rowWidth = 3;
+
+    int* numbers = readNumbers("test/test.txt", rowWidth);
+
+    assert(numbers != NULL);
+    assert(numbers[0] == 12345);
+    assert(numbers[1] == 56789);
+    assert(numbers[2] == 65874);
+
+    free(numbers);
 }
 
 int main() {
