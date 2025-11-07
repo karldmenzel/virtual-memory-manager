@@ -14,7 +14,7 @@ void fileUtilTests() {
     assert(numbers[1] == 56789);
     assert(numbers[2] == 65874);
 
-//    free(numbers);
+    free(numbers);
 }
 
 int main() {
