@@ -4,7 +4,7 @@
 #include "virtual_memory_manager.h"
 #include "logger.h"
 
-const int NUM_ADDRESSES = 1024; //number of addresses in addresses.txt TODO make 1000
+const int NUM_ADDRESSES = 1000; //number of addresses in addresses.txt TODO make 1000
 char* addressFileName = "data/addresses.txt";
 
 const int NUM_PAGE_IDS = 1000;
