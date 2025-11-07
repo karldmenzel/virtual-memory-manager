@@ -21,17 +21,18 @@ int main() {
 
 	int* addresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
-    for (int i = 0; i < NUM_ADDRESSES; i++) {
-		log_debugi("Address: %d", addresses[i]);
-    }
+    printf("Addresses[0]: %d\n", addresses[0]);
+//    for (int i = 0; i < NUM_ADDRESSES; i++) {
+//		log_debugi("Address: %d", addresses[i]);
+//    }
 
-	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
+//	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
+//
+//    for (int i = 0; i < NUM_PAGE_IDS; i++) {
+//		log_debugi("Page id: %d", pageIds[i]);
+//    }
 
-    for (int i = 0; i < NUM_PAGE_IDS; i++) {
-		log_debugi("Page id: %d", pageIds[i]);
-    }
-
-//    free(addresses);
+    free(addresses);
 //    free(pageIds);
 
 	return 0;

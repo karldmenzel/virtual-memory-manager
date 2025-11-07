@@ -3,7 +3,7 @@
 
 #include "logger.h"
 
-enum LOG_LEVEL currentLogLevel = DEBUG;
+enum LOG_LEVEL currentLogLevel = INFO;
 
 void log_debugi(char* logMessage, int substitution) {
     char* formattedMessage = malloc(sizeof(logMessage) + sizeof(substitution) + 10);
