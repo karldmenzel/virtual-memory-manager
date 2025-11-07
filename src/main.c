@@ -21,11 +21,11 @@ int main() {
 
 	int* addresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
-//    log_info("Sucessfully read addresses.");
+    log_info("Sucessfully read addresses.");
 
-//    for (int i = 0; i < NUM_ADDRESSES; i++) {
-//		log_debugi("Address: %d", addresses[i]);
-//    }
+    for (int i = 0; i < NUM_ADDRESSES; i++) {
+		log_debugi("Address: %d", addresses[i]);
+    }
 
 //	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
 

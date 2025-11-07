@@ -3,6 +3,7 @@
 #include <assert.h>
 
 #include "virtual_memory_manager.h"
+#include "logger.h"
 
 void fileUtilTests() {
     int rowWidth = 3;
@@ -17,10 +18,18 @@ void fileUtilTests() {
     free(numbers);
 }
 
+void testLogs() {
+    log_debug("Debug log test\n");
+    log_info("Info log test\n");
+    log_error("Error log test\n");
+}
+
 int main() {
     assert(1);
 
     fileUtilTests();
+
+    testLogs();
 
     printf("Tests passed!\n");
 
