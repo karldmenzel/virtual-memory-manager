@@ -17,28 +17,28 @@ const int NUM_FRAMES = 128; // 2^7
 const int NUM_PAGES = 256; // 2^8
 
 int main() {
-	log_info("Started memory manager program...");
+//	log_info("Started memory manager program...");
 
 	int* addresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
-    log_info("Sucessfully read addresses.");
+//    log_info("Sucessfully read addresses.");
 
-    for (int i = 0; i < NUM_ADDRESSES; i++) {
-		log_debugi("Address: %d", addresses[i]);
-    }
+//    for (int i = 0; i < NUM_ADDRESSES; i++) {
+//		log_debugi("Address: %d", addresses[i]);
+//    }
 
 	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
 
-    log_info("Sucessfully read page ids.");
+//    log_info("Sucessfully read page ids.");
 
-    for (int i = 0; i < NUM_PAGE_IDS; i++) {
-		log_debugi("Page id: %d", pageIds[i]);
-    }
+//    for (int i = 0; i < NUM_PAGE_IDS; i++) {
+//		log_debugi("Page id: %d", pageIds[i]);
+//    }
 
     free(addresses);
     free(pageIds);
 
-    log_info("Program finished.");
+//    log_info("Program finished.");
 
 	return 0;
 }
