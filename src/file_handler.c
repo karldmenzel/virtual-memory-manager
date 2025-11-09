@@ -1,8 +1,12 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #include "file_handler.h"
 #include "logger.h"
+
+const int NUM_PAGES = 256; // 2^8
+const int PAGE_SIZE = 256; // 2^8
 
 // This function takes a file name, and returns a file pointer.
 FILE* openFile(char* fileName) {
@@ -40,8 +44,12 @@ int* readNumbers(char* fileName, int numLines) {
     return numbers;
 }
 
-void loadBackingStore(char* fileName) {
+void loadBackingStore(char* fileName, uint8_t backingStore[][PAGE_SIZE]) {
     FILE* file = openFile(fileName);
+
+    for (int i = 0; i < NUM_PAGES; i++) {
+        fread(backingStore[i], 1, PAGE_SIZE, file);
+    }
 
     fclose(file);
 }
