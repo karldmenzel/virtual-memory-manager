@@ -22,5 +22,5 @@ void fileUtilTests() {
 void testLogs() {
     log_debug("Debug log test");
     log_info("Info log test");
-    log_error("Error log test");
+//    log_error("Error log test");
 }

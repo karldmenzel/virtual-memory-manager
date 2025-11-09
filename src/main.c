@@ -1,3 +1,4 @@
+#include <address_operations.h>
 #include <stdlib.h>
 
 #include "file_handler.h"
@@ -21,10 +22,11 @@ int main() {
 	int* logicalAddresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
     log_info("Successfully read addresses.");
-
     for (int i = 0; i < NUM_ADDRESSES; i++) {
 		log_debugi("Address: %d", logicalAddresses[i]);
     }
+
+	getPageOffset(0);
 
 	// Cleanup
 
