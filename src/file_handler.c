@@ -4,9 +4,7 @@
 
 #include "file_handler.h"
 #include "logger.h"
-
-const int NUM_PAGES = 256; // 2^8
-const int PAGE_SIZE = 256; // 2^8
+#include "constants.h"
 
 // This function takes a file name, and returns a file pointer.
 FILE* openFile(char* fileName) {

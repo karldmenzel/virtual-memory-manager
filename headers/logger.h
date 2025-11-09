@@ -1,7 +1,3 @@
-//
-// Created by Karl Menzel on 10/25/25.
-//
-
 #ifndef LOGGER_H
 #define LOGGER_H
 

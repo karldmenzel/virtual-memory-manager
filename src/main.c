@@ -1,20 +1,14 @@
-#include <address_operations.h>
 #include <stdlib.h>
 #include <stdint.h>
-#include <stdio.h>
 
+#include "address_operations.h"
+#include "constants.h"
 #include "file_handler.h"
 #include "logger.h"
 
-const int NUM_ADDRESSES = 1000; //number of addresses in addresses.txt
 char* addressFileName = "data/addresses.txt";
-
-const int NUM_PAGE_IDS = 1000;
-char* pageIdFileName = "data/page id_decimal.txt";
 char* backingStoreFileName = "data/BACKING_STORE.bin";
-const int VIRTUAL_MEMORY_SIZE = 65536; // 2^16
-const int PHYSICAL_MEMORY_SIZE = 32768; // 2^15
-const int NUM_FRAMES = 128; // 2^7
+const int NUM_ADDRESSES = 1000; //number of addresses in addresses.txt
 
 int main() {
 	log_info("Started memory manager program...");
@@ -31,14 +25,6 @@ int main() {
 	uint8_t backingStore[NUM_PAGES][PAGE_SIZE]; // 256 x 256
 	loadBackingStore(backingStoreFileName, backingStore);
 
-	// for (int i = 0; i < NUM_PAGES; i++) {
-	// 	for (int j = 0; j < PAGE_SIZE; j++) {
-	// 		if (j != 0 && j % 16 == 0)
-	// 			printf("\n");
-	// 		printf("%d\t", backingStore[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
 
 	// Cleanup
 
