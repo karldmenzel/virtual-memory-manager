@@ -2,6 +2,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <limits.h>
 
 #include "address_operations.h"
 #include "constants.h"
@@ -65,10 +66,22 @@ int main() {
 				usedFrameCount++;
 			} else { // there are no free frames left
 				log_debugi("Need to load new frame, but I'm out of frames! Used frame count: %d", usedFrameCount);
-				int leastRecentlyUsedPage = findLeastRecentlyUsedFrame(pageTable);
+				int leastRecentlyUsedPageId = findLeastRecentlyUsedFrame(pageTable);
+				int leastRecentlyUsedFrameId = pageTable[leastRecentlyUsedPageId].frameId;
 
-				// log_infoi("The least recently used page is %d", leastRecentlyUsedPage);
+				// Evict that page
+				pageTable[leastRecentlyUsedPageId].frameId = -1;
+				pageTable[leastRecentlyUsedPageId].lastAccessTime = INT_MAX;
 
+				// Load new page table entry
+				pageTable[pageId].frameId = leastRecentlyUsedFrameId;
+				pageTable[pageId].lastAccessTime = currentAddressCounter;
+
+				// Load new page
+				memcpy(mainMemory[leastRecentlyUsedFrameId], backingStore[pageId], PAGE_SIZE);
+
+				physicalAddress = buildPhysicalAddress(leastRecentlyUsedFrameId, pageOffset);
+				value = mainMemory[leastRecentlyUsedFrameId][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
 			}
 		}
 
