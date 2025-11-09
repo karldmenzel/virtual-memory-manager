@@ -46,22 +46,28 @@ int main() {
 			int frameId = pageTable[pageId].frameId;
 			physicalAddress = buildPhysicalAddress(frameId, pageOffset);
 
-			value = mainMemory[pageId][pageOffset];
+			value = mainMemory[pageId][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
 
 			// update the last access time since we just used that page
 			pageTable[pageId].lastAccessTime = currentAddressCounter;
 		} else { //frame is not loaded
-			if (usedFrameCount < NUM_FRAMES) {
+			if (usedFrameCount < NUM_FRAMES) { // there are free frames left
 				memcpy(mainMemory[usedFrameCount], backingStore[pageId], PAGE_SIZE);
 
 				physicalAddress = buildPhysicalAddress(usedFrameCount, pageOffset);
-				value = mainMemory[usedFrameCount][pageOffset];
+				value = mainMemory[usedFrameCount][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
 
 				log_debugi("Loading new frame with id %d", getFrameId(physicalAddress));
 
+				pageTable[pageId].frameId = usedFrameCount;
+				pageTable[pageId].lastAccessTime = currentAddressCounter;
+
 				usedFrameCount++;
-			} else {
+			} else { // there are no free frames left
 				log_debugi("Need to load new frame, but I'm out of frames! Used frame count: %d", usedFrameCount);
+				int leastRecentlyUsedPage = findLeastRecentlyUsedFrame(pageTable);
+
+				// log_infoi("The least recently used page is %d", leastRecentlyUsedPage);
 
 			}
 		}

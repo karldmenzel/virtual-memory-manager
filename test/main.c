@@ -19,6 +19,7 @@ int main() {
 
     // Page Table Tests
     test_initializePageTable();
+    test_findLeastRecentlyUsedFrame();
 
 //    printf("On this machine, a character is %d bits large.\n", CHAR_BIT);
 
