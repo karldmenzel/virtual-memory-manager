@@ -1,28 +1,23 @@
 CC = gcc
 CFLAGS = -Wall -Wextra -Iheaders
 
-SRC_FILE = src/main.c
-LIB_FILE = src/file_handler.c
-ADDRESS_FILE = src/address_operations.c
-LOG_FILE = src/logger.c
+SRC_FILES := $(wildcard src/*.c)
+SRC_FILES_NO_MAIN := $(filter-out src/main.c, $(SRC_FILES))
+SRC_OUTPUT_FILE = build/karl_memory_manager
 
-OUTPUT_FILE = build/karl_memory_manager
-
-TEST_FILE = test/main.c
-TESTS_FILES = test/file_handler_test.c
-TESTS_ADDRESS = test/address_operations_test.c
+TEST_FILES = test/*.c
 TEST_OUTPUT_FILE = build/tests
 
 all: compile
 
-compile: $(SRC_FILE) clean
-	$(CC) $(CFLAGS) -o $(OUTPUT_FILE) $(SRC_FILE) $(LIB_FILE) $(ADDRESS_FILE) $(LOG_FILE)
+compile: clean
+	$(CC) $(CFLAGS) -o $(SRC_OUTPUT_FILE) $(SRC_FILES)
 
 run: compile
-	./$(OUTPUT_FILE)
+	./$(SRC_OUTPUT_FILE)
 
 compile-test: clean
-	$(CC) $(CFLAGS) -o ./$(TEST_OUTPUT_FILE) $(TEST_FILE) $(TESTS_FILES) $(LIB_FILE) $(TESTS_ADDRESS) $(ADDRESS_FILE) $(LOG_FILE)
+	$(CC) $(CFLAGS) -o ./$(TEST_OUTPUT_FILE) $(TEST_FILES) $(SRC_FILES_NO_MAIN)
 
 test: compile-test
 	./$(TEST_OUTPUT_FILE)
@@ -31,6 +26,6 @@ clean:
 	@if [ -f "$(TEST_OUTPUT_FILE)" ]; then \
  		rm ./$(TEST_OUTPUT_FILE); \
 	fi; \
-	if [ -f "$(OUTPUT_FILE)" ]; then \
- 		rm ./$(OUTPUT_FILE); \
+	if [ -f "$(SRC_OUTPUT_FILE)" ]; then \
+ 		rm ./$(SRC_OUTPUT_FILE); \
 	fi;
