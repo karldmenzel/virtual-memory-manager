@@ -1,6 +1,8 @@
 #ifndef FILE_HANDLER_H
 #define FILE_HANDLER_H
 
+#include <stdint.h>
+
 extern const int NUM_PAGES;
 extern const int PAGE_SIZE;
 
