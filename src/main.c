@@ -5,6 +5,7 @@
 #include "constants.h"
 #include "file_handler.h"
 #include "logger.h"
+#include "page_table.h"
 
 char* addressFileName = "data/addresses.txt";
 char* backingStoreFileName = "data/BACKING_STORE.bin";
@@ -25,6 +26,8 @@ int main() {
 	uint8_t backingStore[NUM_PAGES][PAGE_SIZE]; // 256 x 256
 	loadBackingStore(backingStoreFileName, backingStore);
 
+	PageTableEntry pageTable[NUM_PAGES];
+	initializePageTable(pageTable);
 
 	// Cleanup
 

@@ -1,8 +1,9 @@
-#include <stdio.h>
 #include <limits.h>
+#include <stdio.h>
 
-#include "file_handler_test.h"
 #include "address_operations_test.h"
+#include "file_handler_test.h"
+#include "page_table_test.h"
 
 int main() {
 
@@ -15,7 +16,10 @@ int main() {
     test_getPageId();
     test_getFrameId();
 
-    printf("On this machine, a character is %d bits large.\n", CHAR_BIT);
+    // Page Table Tests
+    test_initializePageTable();
+
+//    printf("On this machine, a character is %d bits large.\n", CHAR_BIT);
 
     printf("Tests passed!\n");
 
