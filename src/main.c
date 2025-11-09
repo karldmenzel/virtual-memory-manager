@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "address_operations.h"
 #include "constants.h"
@@ -32,6 +33,8 @@ int main() {
 
 	uint8_t mainMemory[NUM_FRAMES][PAGE_SIZE];
 
+	int usedFrameCount = 0;
+
 	for(int currentAddressCounter = 0; currentAddressCounter < NUM_ADDRESSES; currentAddressCounter++) {
 		int logicalAddress = logicalAddresses[currentAddressCounter];
 		int pageId = getPageId(logicalAddress);
@@ -39,6 +42,7 @@ int main() {
 		int physicalAddress = 0, value = 0;
 
 		if (pageTable[pageId].frameId != -1) { //frame is loaded
+			log_debug("Frame already loaded.\n");
 			int frameId = pageTable[pageId].frameId;
 			physicalAddress = buildPhysicalAddress(frameId, pageOffset);
 
@@ -47,7 +51,19 @@ int main() {
 			// update the last access time since we just used that page
 			pageTable[pageId].lastAccessTime = currentAddressCounter;
 		} else { //frame is not loaded
+			if (usedFrameCount < NUM_FRAMES) {
+				memcpy(mainMemory[usedFrameCount], backingStore[pageId], PAGE_SIZE);
 
+				physicalAddress = buildPhysicalAddress(usedFrameCount, pageOffset);
+				value = mainMemory[usedFrameCount][pageOffset];
+
+				log_debugi("Loading new frame with id %d", getFrameId(physicalAddress));
+
+				usedFrameCount++;
+			} else {
+				log_debugi("Need to load new frame, but I'm out of frames! Used frame count: %d", usedFrameCount);
+
+			}
 		}
 
 		printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
