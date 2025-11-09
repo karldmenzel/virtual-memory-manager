@@ -35,5 +35,13 @@ int* readNumbers(char* fileName, int numLines) {
         log_debugi("File read - number: %d", number);
     }
 
+    fclose(file);
+
     return numbers;
+}
+
+void loadBackingStore(char* fileName) {
+    FILE* file = openFile(fileName);
+
+    fclose(file);
 }

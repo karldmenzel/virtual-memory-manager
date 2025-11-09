@@ -1,5 +1,6 @@
 #include <address_operations.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "file_handler.h"
 #include "logger.h"
@@ -19,14 +20,16 @@ const int NUM_PAGES = 256; // 2^8
 int main() {
 	log_info("Started memory manager program...");
 
+	// In a real operating system we would enforce each address being 16 bits, but I didn't here.
 	int* logicalAddresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
     log_info("Successfully read addresses.");
     for (int i = 0; i < NUM_ADDRESSES; i++) {
-		log_debugi("Address: %d", logicalAddresses[i]);
+		log_debugi("Logical address: %d", logicalAddresses[i]);
+    	log_debugi("Page id: %d", getPageId(logicalAddresses[i]));
     }
 
-	getPageOffset(0);
+	uint8_t backingStore[NUM_PAGES][PAGE_SIZE]; // 256 x 256
 
 	// Cleanup
 
