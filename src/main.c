@@ -1,7 +1,6 @@
 #include <stdlib.h>
-#include <stdio.h>
 
-#include "virtual_memory_manager.h"
+#include "file_handler.h"
 #include "logger.h"
 
 const int NUM_ADDRESSES = 1000; //number of addresses in addresses.txt
@@ -19,24 +18,17 @@ const int NUM_PAGES = 256; // 2^8
 int main() {
 	log_info("Started memory manager program...");
 
-	int* addresses = readNumbers(addressFileName, NUM_ADDRESSES);
+	int* logicalAddresses = readNumbers(addressFileName, NUM_ADDRESSES);
 
-    log_info("Sucessfully read addresses.");
+    log_info("Successfully read addresses.");
 
     for (int i = 0; i < NUM_ADDRESSES; i++) {
-		log_debugi("Address: %d", addresses[i]);
+		log_debugi("Address: %d", logicalAddresses[i]);
     }
 
-	int* pageIds = readNumbers(pageIdFileName, NUM_PAGE_IDS);
+	// Cleanup
 
-    log_info("Sucessfully read page ids.");
-
-    for (int i = 0; i < NUM_PAGE_IDS; i++) {
-		log_debugi("Page id: %d", pageIds[i]);
-    }
-
-    free(addresses);
-//    free(pageIds);
+    free(logicalAddresses);
 
     log_info("Program finished.");
 

@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "virtual_memory_manager.h"
+#include "file_handler.h"
 #include "logger.h"
 
 // This function takes a file name, and returns a file pointer.

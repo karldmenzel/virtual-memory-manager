@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "virtual_memory_manager.h"
+#include "file_handler.h"
+#include "file_handler_test.h"
 #include "logger.h"
 
 void fileUtilTests() {
@@ -22,16 +23,4 @@ void testLogs() {
     log_debug("Debug log test");
     log_info("Info log test");
     log_error("Error log test");
-}
-
-int main() {
-    assert(1);
-
-    fileUtilTests();
-
-    testLogs();
-
-    printf("Tests passed!\n");
-
-    return 0;
 }
