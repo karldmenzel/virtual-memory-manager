@@ -1,9 +1,25 @@
+#include <assert.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stdint.h>
 
 #include "address_operations_test.h"
 #include "file_handler_test.h"
 #include "page_table_test.h"
+
+void intCasting() {
+    uint8_t unsignedByte = 0b11111111; //-1 signed, or 255 unsigned
+    assert(unsignedByte == 255);
+
+    int8_t signedByte = (int8_t)unsignedByte;
+    assert(signedByte == -1);
+
+    int signedInt = (int)signedByte;
+    assert(signedInt == -1);
+
+    int oneStepCase = (int)(int8_t)unsignedByte;
+    assert(oneStepCase == -1);
+}
 
 int main() {
 
@@ -21,7 +37,7 @@ int main() {
     test_initializePageTable();
     test_findLeastRecentlyUsedFrame();
 
-//    printf("On this machine, a character is %d bits large.\n", CHAR_BIT);
+    intCasting();
 
     printf("Tests passed!\n");
 

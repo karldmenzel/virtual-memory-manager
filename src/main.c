@@ -47,7 +47,7 @@ int main() {
 			int frameId = pageTable[pageId].frameId;
 			physicalAddress = buildPhysicalAddress(frameId, pageOffset);
 
-			value = mainMemory[pageId][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
+			value = (int)(int8_t)mainMemory[pageId][pageOffset];
 
 			// update the last access time since we just used that page
 			pageTable[pageId].lastAccessTime = currentAddressCounter;
@@ -56,7 +56,7 @@ int main() {
 				memcpy(mainMemory[usedFrameCount], backingStore[pageId], PAGE_SIZE);
 
 				physicalAddress = buildPhysicalAddress(usedFrameCount, pageOffset);
-				value = mainMemory[usedFrameCount][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
+				value = (int)(int8_t)mainMemory[usedFrameCount][pageOffset];
 
 				log_debugi("Loading new frame with id %d", getFrameId(physicalAddress));
 
@@ -81,7 +81,7 @@ int main() {
 				memcpy(mainMemory[leastRecentlyUsedFrameId], backingStore[pageId], PAGE_SIZE);
 
 				physicalAddress = buildPhysicalAddress(leastRecentlyUsedFrameId, pageOffset);
-				value = mainMemory[leastRecentlyUsedFrameId][pageOffset]; //TODO CONVERT THIS TO SIGNED INT
+				value = (int)(int8_t)mainMemory[leastRecentlyUsedFrameId][pageOffset];
 			}
 		}
 
