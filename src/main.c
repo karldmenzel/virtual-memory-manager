@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "address_operations.h"
 #include "constants.h"
@@ -28,6 +29,29 @@ int main() {
 
 	PageTableEntry pageTable[NUM_PAGES];
 	initializePageTable(pageTable);
+
+	uint8_t mainMemory[NUM_FRAMES][PAGE_SIZE];
+
+	for(int currentAddressCounter = 0; currentAddressCounter < NUM_ADDRESSES; currentAddressCounter++) {
+		int logicalAddress = logicalAddresses[currentAddressCounter];
+		int pageId = getPageId(logicalAddress);
+		int pageOffset = getPageOffset(logicalAddress);
+		int physicalAddress = 0, value = 0;
+
+		if (pageTable[pageId].frameId != -1) { //frame is loaded
+			int frameId = pageTable[pageId].frameId;
+			physicalAddress = buildPhysicalAddress(frameId, pageOffset);
+
+			value = mainMemory[pageId][pageOffset];
+
+			// update the last access time since we just used that page
+			pageTable[pageId].lastAccessTime = currentAddressCounter;
+		} else { //frame is not loaded
+
+		}
+
+		printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
+	}
 
 	// Cleanup
 

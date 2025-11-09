@@ -27,3 +27,10 @@ void test_getFrameId() {
 	assert(getFrameId(0b111111100000000) == 0b000000001111111);
 	assert(getFrameId(0b1111111100000000) == 0b000000001111111);
 }
+
+void test_buildPhysicalAddress() {
+	assert(buildPhysicalAddress(0,0) == 0);
+	assert(buildPhysicalAddress(0,1) == 1);
+	assert(buildPhysicalAddress(1,1) == 257);
+	assert(buildPhysicalAddress(0b1111111,0b11111111) == 0b111111111111111);
+}

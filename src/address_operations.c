@@ -26,3 +26,10 @@ int getFrameId(int address) {
 
     return (address & FRAME_ID_MASK) >> PAGE_OFFSET_BITS;
 }
+
+int buildPhysicalAddress(int frameId, int pageOffset) {
+    int physicalAddress = frameId << PAGE_OFFSET_BITS;
+    physicalAddress &= FRAME_ID_MASK;
+    physicalAddress += pageOffset;
+    return physicalAddress;
+}

@@ -15,6 +15,7 @@ int main() {
     test_getPageOffset();
     test_getPageId();
     test_getFrameId();
+    test_buildPhysicalAddress();
 
     // Page Table Tests
     test_initializePageTable();
