@@ -7,7 +7,7 @@
 #include "file_handler_test.h"
 #include "page_table_test.h"
 
-void intCasting() {
+void test_intCasting() {
     uint8_t unsignedByte = 0b11111111; //-1 signed, or 255 unsigned
     assert(unsignedByte == 255);
 
@@ -38,7 +38,7 @@ int main() {
     test_findLeastRecentlyUsedFrame();
 //    test_printPageTable();
 
-    intCasting();
+    test_intCasting();
 
     printf("Tests passed!\n");
 

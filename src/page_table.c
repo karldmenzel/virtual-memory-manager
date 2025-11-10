@@ -1,10 +1,8 @@
 #include <limits.h>
+#include <stdio.h>
 
 #include "constants.h"
 #include "page_table.h"
-
-#include <stdio.h>
-
 #include "logger.h"
 
 void initializePageTable(PageTableEntry pageTable[NUM_PAGES]) {

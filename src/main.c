@@ -97,13 +97,13 @@ int main() {
 			}
 		}
 
-
-		printf("Page ID: %d Page Offset: %d Value: %d\n", pageId, pageOffset, value);
-		// printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
+		printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
 	}
 
 	double pageFaultRate = ((double)pageFaultCount / (double)NUM_ADDRESSES) * 100;
-	printf("\nPage fault rate: %f%%\n", pageFaultRate);
+
+	printf("\nPage fault count: %d\n", pageFaultCount);
+	printf("Page fault rate: %f%%\n", pageFaultRate);
 
 	// Cleanup
 
