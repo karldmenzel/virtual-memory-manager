@@ -35,17 +35,18 @@ int main() {
 	uint8_t mainMemory[NUM_FRAMES][PAGE_SIZE];
 
 	int usedFrameCount = 0;
+	int pageFaultCount = 0;
 
 	for(int currentAddressCounter = 0; currentAddressCounter < NUM_ADDRESSES; currentAddressCounter++) {
 
-		if (currentAddressCounter == 500) {
-			printf("Page table after 500 virtual address requests:\n");
-			printPageTable(pageTable);
-		}
-		if (currentAddressCounter == 631) {
-			printf("Page table after 631 virtual address requests:\n");
-			printPageTable(pageTable);
-		}
+		// if (currentAddressCounter == 500) {
+		// 	printf("Page table after 500 virtual address requests:\n");
+		// 	printPageTable(pageTable);
+		// }
+		// if (currentAddressCounter == 631) {
+		// 	printf("Page table after 631 virtual address requests:\n");
+		// 	printPageTable(pageTable);
+		// }
 
 		int logicalAddress = logicalAddresses[currentAddressCounter];
 		int pageId = getPageId(logicalAddress);
@@ -75,6 +76,7 @@ int main() {
 
 				usedFrameCount++;
 			} else { // there are no free frames left
+				pageFaultCount++;
 				log_debugi("Need to load new frame, but I'm out of frames! Used frame count: %d", usedFrameCount);
 				int leastRecentlyUsedPageId = findLeastRecentlyUsedFrame(pageTable);
 				int leastRecentlyUsedFrameId = pageTable[leastRecentlyUsedPageId].frameId;
@@ -95,8 +97,13 @@ int main() {
 			}
 		}
 
-		printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
+
+		printf("Page ID: %d Page Offset: %d Value: %d\n", pageId, pageOffset, value);
+		// printf("Logical address: %d Physical Address: %d Value: %d\n", logicalAddress, physicalAddress, value);
 	}
+
+	double pageFaultRate = ((double)pageFaultCount / (double)NUM_ADDRESSES) * 100;
+	printf("\nPage fault rate: %f%%\n", pageFaultRate);
 
 	// Cleanup
 
