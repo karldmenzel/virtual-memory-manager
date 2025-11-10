@@ -2,6 +2,9 @@
 
 #include "constants.h"
 #include "page_table.h"
+
+#include <stdio.h>
+
 #include "logger.h"
 
 void initializePageTable(PageTableEntry pageTable[NUM_PAGES]) {
@@ -29,4 +32,18 @@ int findLeastRecentlyUsedFrame(PageTableEntry pageTable[NUM_PAGES]) {
     log_debugi("Oldest page age: %d", oldestUseTime);
 
     return oldestPageId;
+}
+
+void printPageTable(PageTableEntry pageTable[NUM_PAGES]) {
+    printf("----------------------------------------------\n");
+    printf("| Page ID\t| Frame ID\t| Last accessed time |\n");
+    printf("----------------------------------------------\n");
+    for (int i = 0; i < NUM_PAGES; i++) {
+        if (pageTable[i].frameId == -1) {
+            printf("| %d \t\t| \t\t\t| \t\t\t\t\t |\n", i);
+        } else {
+            printf("| %d \t\t| %d\t\t\t| %d\t\t\t\t |\n", i, pageTable[i].frameId, pageTable[i].lastAccessTime);
+        }
+    }
+    printf("----------------------------------------------\n");
 }

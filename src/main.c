@@ -37,6 +37,16 @@ int main() {
 	int usedFrameCount = 0;
 
 	for(int currentAddressCounter = 0; currentAddressCounter < NUM_ADDRESSES; currentAddressCounter++) {
+
+		if (currentAddressCounter == 500) {
+			printf("Page table after 500 virtual address requests:\n");
+			printPageTable(pageTable);
+		}
+		if (currentAddressCounter == 631) {
+			printf("Page table after 631 virtual address requests:\n");
+			printPageTable(pageTable);
+		}
+
 		int logicalAddress = logicalAddresses[currentAddressCounter];
 		int pageId = getPageId(logicalAddress);
 		int pageOffset = getPageOffset(logicalAddress);

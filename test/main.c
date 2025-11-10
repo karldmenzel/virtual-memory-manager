@@ -36,6 +36,7 @@ int main() {
     // Page Table Tests
     test_initializePageTable();
     test_findLeastRecentlyUsedFrame();
+//    test_printPageTable();
 
     intCasting();
 

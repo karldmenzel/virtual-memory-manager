@@ -49,3 +49,19 @@ void test_findLeastRecentlyUsedFrame() {
 
     assert(oldestPageId == 1);
 }
+
+void test_printPageTable() {
+    PageTableEntry pageTable[NUM_PAGES];
+    initializePageTable(pageTable);
+
+    pageTable[0].frameId = 3;
+    pageTable[0].lastAccessTime = 99;
+
+    pageTable[1].frameId = 4;
+    pageTable[1].lastAccessTime = 112;
+
+    pageTable[2].frameId = 5;
+    pageTable[2].lastAccessTime = 999;
+
+    printPageTable(pageTable);
+}

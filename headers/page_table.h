@@ -10,5 +10,6 @@ typedef struct {
 
 void initializePageTable(PageTableEntry pageTable[NUM_PAGES]);
 int findLeastRecentlyUsedFrame(PageTableEntry pageTable[NUM_PAGES]);
+void printPageTable(PageTableEntry pageTable[NUM_PAGES]);
 
 #endif //PAGE_TABLE_H
